@@ -10,6 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.musau.bookshelf.ui.screens.BooksGrid
+import com.musau.bookshelf.ui.screens.BookshelfViewModel
 import com.musau.bookshelf.ui.theme.BookshelfTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +25,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val bookshelfViewModel : BookshelfViewModel = viewModel(factory = BookshelfViewModel.Factory)
+//                    BooksGrid(
+//                        //books = bookshelfViewModel.bookShelfUiState
+//                    )
                 }
             }
         }

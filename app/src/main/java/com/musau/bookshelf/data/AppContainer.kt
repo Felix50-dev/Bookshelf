@@ -6,7 +6,9 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 
-interface AppContainer
+interface AppContainer {
+    val bookshelfRepository: BookshelfRepository
+}
 
 class BooksAppContainer: AppContainer {
 
@@ -25,5 +27,8 @@ class BooksAppContainer: AppContainer {
      */
     private val retrofitService: BooksApiService by lazy {
         retrofit.create(BooksApiService::class.java)
+    }
+    override val bookshelfRepository: BookshelfRepository by lazy {
+        BookshelfRepository.DefaultBookShelfRepository(retrofitService)
     }
 }
